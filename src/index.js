@@ -8,55 +8,32 @@ const config = require('../config');
 
 
 const discoverMovie = () => {
-  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${config.api_key}`
-  // code here
-  axios.get(url)
-  .then(function(response){
-    return response.data.results
-  })
-  .catch(function(error){
-    //handle error
-    console.log(error)
-  })
-  .finally(function(){
-  });
-}
+    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${config.API_KEY}`
+    return axios(url).then(response => response)
+  }
+
 
 const getMovieById = (id) => {
   const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${config.api_key}`
   // code here
-  axios.get(url, {
-    params: {
-      id: 500
-    }
-  })
-  .then(function(response){
+  return axios(url, {params: {id: 500}}).then(response=>response)
     return response.data.original_title
-  })
-  .catch(function(error){
-    //handle error
-    return error
-  })
-  .finally(function(){
-  });
+ }
+//   .catch(function(error){
+//     //handle error
+//     return error
+//  })
+// //   .finally(function(){
+//   });
 }
 
 const getMovieByIdFailure = () => {
   const fakeId = 1 // FAKE ID HERE
   const url = `https://api.themoviedb.org/3/movie/${fakeId}?api_key=${config.api_key}`
   // code here
-  axios.get(url)
-  .then(function(response){
-    return response
-  })
-  .catch(function(error){
-    //handle error
-    return error
-  })
-  .finally(function(){
-  });
+  return axios(url).then(response=>response){
+  }
 }
-
 
 
 
